@@ -1,0 +1,29 @@
+@isTest
+public class StringParserTest {
+    testMethod //Single Vowel added to Map
+    static void vowelCounterSingleVowel() {
+        String str = 'Test';
+        Test.startTest();
+        Map<String, Integer> countedVowels = StringParser.vowelCounter(str);
+        Integer numOfE = countedVowels.get('e');
+        Test.stopTest();
+        System.assertEquals(1, numOfE);
+    }
+	testMethod //Multiple Vowels Added to Map, with one vowel duplicated
+    static void vowelCounterMultipleVowels() {
+    	String str = 'Test Method';
+        Test.startTest();
+        Map<String, Integer> countedVowels = StringParser.vowelCounter(str);
+        Integer numOfE = countedVowels.get('e');
+        Test.stopTest();
+        System.assertEquals(2, numOfE);
+    }
+    testMethod //String is instantiated, but left blank, Map should be empty on assertion
+    static void vowelCounterNoVowels() {
+    	String str;
+		Test.startTest();
+		Map<String, Integer> countedVowels = StringParser.vowelCounter(str);
+		Test.stopTest();
+        System.assert(countedVowels.isEmpty());
+    }
+}

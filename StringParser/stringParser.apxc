@@ -1,0 +1,32 @@
+public class StringParser {
+    
+    // Counts the number of instances of a vowel in a provided string. 
+    // Returns the mapped vowels and the number of occurances
+    public static Map<String, Integer> vowelCounter(String str) {
+        Map<String,Integer> countedVowels = new Map<String, Integer>();
+        
+        // Regex formula for matching all occurances of a vowel, case insensitve and global
+        Pattern vowels = Pattern.compile('(?i)(?m)[aeiouy]');
+        
+        // If the string is blank, method will return an empty Map
+        if (!String.isBlank(str)) {
+            Matcher matchedStr = vowels.matcher(str);
+            List<String> matchedVowels = new List<String>();
+            while (matchedStr.find()) {
+                String groupValue = matchedStr.group();
+                matchedVowels.add(groupValue);
+            }
+            for(String vowel : matchedVowels) {
+            	String tempVowel = vowel.toLowerCase();
+                if (countedVowels.containsKey(tempVowel)) {
+                    countedVowels.put(tempVowel, countedVowels.get(tempVowel)+1);
+                }
+                else {
+                    countedVowels.put(tempVowel, 1);
+                }
+        	}
+        }
+        system.debug(countedVowels);
+        return countedVowels;
+    }
+}
